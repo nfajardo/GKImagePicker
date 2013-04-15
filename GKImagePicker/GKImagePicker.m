@@ -138,5 +138,9 @@
 - (void)imageCropperDidFinish:(GKImageCropper *)imageCropper withImage:(UIImage *)image {
     [self.delegate imagePickerDidFinish:self withImage:image];
 }
+-(void)imageCropperDidCancel
+{
+    [self.delegate imagePickerDidCancel];
+}
 
 @end

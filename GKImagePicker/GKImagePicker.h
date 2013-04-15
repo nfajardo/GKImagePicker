@@ -42,4 +42,5 @@
 
 @protocol GKImagePickerDelegate <NSObject>
 -(void)imagePickerDidFinish:(GKImagePicker *)imagePicker withImage:(UIImage *)image;
+-(void)imagePickerDidCancel;
 @end

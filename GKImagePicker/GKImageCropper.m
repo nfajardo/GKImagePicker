@@ -109,6 +109,13 @@
     UIBarButtonItem *okButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(handleDoneButton)];
     [self.navigationItem setRightBarButtonItem:okButton animated:NO];
     
+    
+    // **********************************************
+    // * Configure navigation item
+    // **********************************************
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(handleCancelButton)];
+    [self.navigationItem setLeftBarButtonItem:cancelButton animated:NO];
+    
     // **********************************************
     // * Determine scroll zoom level
     // **********************************************
@@ -248,6 +255,10 @@ UIImage* imageFromView(UIImage* srcImage, CGRect* rect) {
     
     [self dismissModalViewControllerAnimated:self.dismissAnimated];
     [self.delegate imageCropperDidFinish:self withImage:self.image];
+}
+-(void)handleCancelButton {
+    [self dismissModalViewControllerAnimated:self.dismissAnimated];
+    [self.delegate imageCropperDidCancel];
 }
 
 - (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {

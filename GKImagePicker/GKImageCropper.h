@@ -54,4 +54,5 @@
 
 @protocol GKImageCropperDelegate <NSObject>
 - (void)imageCropperDidFinish:(GKImageCropper *)imageCropper withImage:(UIImage *)image;
+- (void)imageCropperDidCancel;
 @end

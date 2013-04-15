@@ -75,5 +75,9 @@
     myImageView.contentMode = UIViewContentModeCenter;
     myImageView.image = image;
 }
+-(void)imagePickerDidCancel
+{
+
+}
 
 @end
