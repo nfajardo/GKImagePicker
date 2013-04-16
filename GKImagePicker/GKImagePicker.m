@@ -85,10 +85,12 @@
         case 1:
             switch (buttonIndex) {
                 case 0:
+                    selected = SelectedTypeGallery;
                     [self showCameraImagePicker];
                     break;
                 case 1:
-                    [self showGalleryImagePicker];
+                    selected = SelectedTypeGallery;
+                    [self showGalleryImagePicker:YES];
                     break;
             }
             break;
@@ -110,12 +112,12 @@
 #endif
 }
 
-- (void)showGalleryImagePicker {
+- (void)showGalleryImagePicker:(BOOL)animate {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     picker.delegate = self;
     picker.allowsEditing = NO;
-    [(UIViewController *)self.delegate presentModalViewController:picker animated:YES];
+    [(UIViewController *)self.delegate presentModalViewController:picker animated:animate];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo {
@@ -140,6 +142,10 @@
 }
 -(void)imageCropperDidCancel
 {
+    if (selected==SelectedTypeGallery) {
+        [self showGalleryImagePicker:NO];
+    }
+    
     [self.delegate imagePickerDidCancel];
 }
 

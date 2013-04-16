@@ -28,9 +28,18 @@
 
 @protocol GKImagePickerDelegate;
 
+
+typedef enum SelectedType : NSInteger SelectedType;
+enum SelectedType : NSInteger {
+    SelectedTypeGallery,
+    SelectedTypeCamera,
+
+};
+
 @interface GKImagePicker : UIViewController {
     id<GKImagePickerDelegate> delegate;
     GKImageCropper *cropper;
+    SelectedType selected;
 }
 
 @property (nonatomic, assign) id<GKImagePickerDelegate> delegate;
